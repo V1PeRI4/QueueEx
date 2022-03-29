@@ -9,7 +9,7 @@ struct Queue{
 } *beginQueue, * endQueue;
 
 
-Queue* InStack(Queue* p, int in) {
+Queue* InQueue(Queue* p, int in) {
     Queue* t = new Queue; 
     t->info = in; 
     t->next = p; 
@@ -17,7 +17,7 @@ Queue* InStack(Queue* p, int in) {
 }
 
 
-void viewStack(Queue* p) {
+void viewQueue(Queue* p) {
     Queue* t = p;
     while (t != NULL) {
         cout << " " << t->info << endl;
@@ -26,7 +26,7 @@ void viewStack(Queue* p) {
 }
 
 
-void delStack(Queue** p) {
+void delQueue(Queue** p) {
     while (*p != NULL) {
         endQueue = *p;
         *p = (*p)->next;
@@ -121,7 +121,7 @@ int main()
             cin >> n;
             for (i = 1; i <= n; i++) {
                 in = rand();
-                beginQueue = InStack(beginQueue, in);
+                beginQueue = InQueue(beginQueue, in);
             }
             if (command == 1)
                 cout << "Создано " << n << " эл." << endl;
@@ -139,7 +139,7 @@ int main()
             }
 
             cout << "\n---Queue---" << endl;
-            viewStack(beginQueue);
+            viewQueue(beginQueue);
 
             system("pause");
             break;
@@ -158,7 +158,7 @@ int main()
             break;
 
         case 5:
-            delStack(&beginQueue);
+            delQueue(&beginQueue);
             cout << "Память чиста!" << endl;
 
             system("pause");
@@ -166,7 +166,7 @@ int main()
 
         case 0:
             if (beginQueue != NULL)
-                delStack(&beginQueue);
+                delQueue(&beginQueue);
 
             system("pause");
             return 0;
